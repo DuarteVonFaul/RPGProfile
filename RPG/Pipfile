@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 flask = "*"
-pyrebase = {file = "https://github.com/DuarteVonFaul/Pyrebase/archive/master.zip"}
+pyrebase4 = "*"
+pycryptodomex = "*"
 
 [dev-packages]
 python-dotenv = "*"

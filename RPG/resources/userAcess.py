@@ -27,11 +27,21 @@ def init(app):
         return register(UserAcess(email,password))
 
 
+    @app.route("/api/v1/redpass")
+    def redefineform():
+        email = request.form.get('email_redefine')
+        return redefine_password(email)
+
+    
 
 
     #Templates
     @app.route("/login")
     def logintemplate():
+        return render_template('login.html', msg={"message": "Uma mensagem interessante"})
+
+    @app.route("/redefine-password")
+    def redefinetemplate():
         return render_template('login.html', msg={"message": "Uma mensagem interessante"})
 
     
