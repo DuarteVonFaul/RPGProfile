@@ -7,7 +7,6 @@ const init = () => {
 
     if (submitButton) {
         submitButton.addEventListener('click', (e) => {
-            console.log(inputEmail.value, inputPassword.value)
             e.preventDefault()
             fetch('/api/v1/login', {
                 method: 'POST',
@@ -21,14 +20,23 @@ const init = () => {
             }).then((response) => {
                 if (response.ok) {
                     response.json().then((data) => {
-                        console.log(data)
+                        //verificacao do status retornado
+                        if (data.status == 200) {
+                            var date = new Date();
+                            date.setDate(date.getDate() + 1)// adiciona um dia
+                            document.cookie= `idToke= ${data.info.idToken}; expire=Thu, ${date}; SameSite=None; Secure; path='/home.html`
+                            window.location.href= "home"
+                        } else {
+                            document.querySelector('.errorMessage').classList.add('showErrorMessage')
+                            throw Error('Email/Senha informados são invalidos.')
+                        }
                     })
                 } else {
-                    throw Error('Ocorreu algum erro na aplicação')
+                    throw Error('Comportamento inesperado na aplicação.')
                 }
             }).catch((error) => {
                 console.log(error)
-                document.querySelector('.errorMessage').classList.add('showErrorMessage')
+                //document.querySelector('.errorMessage').classList.add('showErrorMessage')
             })
         })
     }
@@ -36,7 +44,7 @@ const init = () => {
 
 const validateInput = () => {
     document.querySelector('input[type= "button"]').disabled = validateInputEmail() || validateInputPassword()
-    if(document.querySelector('.errorMessage').classList.contains('showErrorMessage')){
+    if (document.querySelector('.errorMessage').classList.contains('showErrorMessage')) {
         document.querySelector('.errorMessage').classList.remove('showErrorMessage')
     }
 }
