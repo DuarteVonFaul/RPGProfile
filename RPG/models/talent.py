@@ -1,0 +1,3 @@
+
+class Talent():
+    pass
