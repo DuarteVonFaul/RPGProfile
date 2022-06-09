@@ -2,7 +2,7 @@ const init = () => {
     const inputEmail = document.querySelector('#inputEmail')
     const inputPassword = document.querySelector('#inputPassword')
     const submitButton = document.querySelector('input[type= "button"]')
-
+    document.querySelector('input[type= "button"]').disabled = true;
     window.addEventListener('input', validateInput)
 
     if (submitButton) {
@@ -22,10 +22,10 @@ const init = () => {
                     response.json().then((data) => {
                         //verificacao do status retornado
                         if (data.status == 200) {
-                            var date = new Date();
-                            date.setDate(date.getDate() + 1)// adiciona um dia
-                            document.cookie= `idToke= ${data.info.idToken}; expire=Thu, ${date}; SameSite=None; Secure; path='/home.html`
-                            window.location.href= "home"
+                            const date = new Date();
+                            date.setDate(date.getDate() + 1);
+                            document.cookie= `idToke= ${data.info.idToken}; expires= ${date}; SameSite=None; Secure; path='/'`
+                            //window.location.href= "home" 
                         } else {
                             document.querySelector('.errorMessage').classList.add('showErrorMessage')
                             throw Error('Email/Senha informados são invalidos.')
