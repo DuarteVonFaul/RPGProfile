@@ -17,12 +17,12 @@ const initLogin = () => {
                     throw Error('Formato de entrada email/senha invalida.')
                 }
 
-                let response = await fetchUserSend('/api/v1/login', 'POST', {
+                let response = await fetchUserSend('/api/user/login', 'POST', {
                     'email_login': inputEmail.value,
                     'password_login': inputPassword.value
                 })
 
-                console.log(response)
+                fetchUserLoginValidation(response)
 
             } catch (error) {
                 showErrorMessage(error)
@@ -40,7 +40,7 @@ const initRegister = () => {
     window.addEventListener('input', turnOfErrorMessage)
 
     if (submitButton) {
-        submitButton.addEventListener('click', (e) => {
+        submitButton.addEventListener('click', async (e) => {
             e.preventDefault()
             try {
                 //trativas de erro sobre os inputs
@@ -50,32 +50,13 @@ const initRegister = () => {
                     throw Error('Formato de entrada email/senha invalida.')
                 }
 
-                fetch('/api/v1/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'email_register': inputEmail.value,
-                        'password_register': inputPassword.value
-                    })
-                }).then((response) => {
-                    if (response.ok) {
-                        response.json().then((data) => {
-                            if (data.status == 200) {
-                                console.log('cadastro realizado com sucesso')
-                            } else {
-                                throw Error('Email/senha informados são invalidos.')
-                            }
-                        }).catch((error) => {
-                            showErrorMessage(error)
-                        })
-                    } else {
-                        throw Error('Comportamento inesperado na aplicação.')
-                    }
-                }).catch((error) => {
-                    showErrorMessage(error)
+                let response = await fetchUserSend('/api/user/register', 'POST', {
+                    'email_register': inputEmail.value,
+                    'password_register': inputPassword.value
                 })
+
+                fetchUserRegisterValidation(response)
+
             } catch (error) {
                 showErrorMessage(error)
             }
@@ -97,6 +78,34 @@ const fetchUserSend = async (url, method, data) => {
         .then(dataResponse => dataReturn = dataResponse)
 
     return dataReturn
+}
+
+/* || */
+const fetchUserLoginValidation= (data)=>{
+    try{
+        if(!(data.status == 200)){
+            throw Error('email/senha informados são invalidos.')
+        }
+        saveFetchUserData(data)
+        window.location.href= '/home'
+    }catch(error){
+        showErrorMessage(error)
+    }
+}
+
+const fetchUserRegisterValidation= (data)=>{
+    try{
+        if(!(data.status == 200)){
+            throw Error('email/senha informados são invalidos.')
+        }
+        window.location.href= '/login'
+    }catch(error){
+        showErrorMessage(error)
+    }
+}
+
+const saveFetchUserData= (data)=>{
+    console.log('salvou cookie')
 }
 
 /* || Funcoes de uso geral */
