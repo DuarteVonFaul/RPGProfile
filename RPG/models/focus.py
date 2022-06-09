@@ -7,4 +7,4 @@ class Focus():
 
             self.name           = name
             self.description    = description
-            self.group          = groupList[group]  
+            self.group          = groupList[group]

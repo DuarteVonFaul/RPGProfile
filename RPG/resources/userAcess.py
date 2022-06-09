@@ -32,6 +32,11 @@ def init(app):
         email = request.get_json()['email_redefine']
         return redefine_password(email)
 
+    @app.route("/api/user/refresh-toker", methods=['POST'])
+    def refreshform():
+        token = request.get_json()['toker_Refrash']
+        return refreshToken(token)
+
     
 
 
