@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script defer src="../static/js/app.js"></script>
+
+    <script src="https://kit.fontawesome.com/3797641237.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="h1Container">
+            <img src="../static/assets/d20.png" alt="dado de RPG">
+            RPGprofile
+        </h1>
+        <div class="card">
+            <form>
+                <label for="inputEmail">Email</label>
+                <div class="cardInput">
+                    <i class="fa-solid fa-unlock"></i>
+                    <input type="email" name="inputEmail" id="inputEmail">
+                </div>
+                <label for="inputPassword">Senha</label>
+                <div class="cardInput">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="password" name="inputPassword" id="inputPassword">
+                </div>
+                <p class="errorMessage">Email e/ou senha invalidas</p>
+                <input type="button" value="login" disabled="true">
+            </form>
+            <div class="cardFooter">
+                <!-- link para a pagina de cadastro -->
+                <p>Não tem conta?<a href="singup.html">Inscreva-se</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

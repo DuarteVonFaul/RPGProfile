@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Source+Sans+Pro:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --p-color: hsl(38, 100%, 92%);
+
+    --s-color: hsl(0, 0%, 98%);
+    --s-ligth: hsl(0, 0%, 100%);
+    --s-dark: hsl(36, 23%, 74%);
+
+    --c-error-msg: hsl(349, 93%, 54%);
+    --c-input-btn: hsl(5, 97%, 66%);
+    --c-input-btn-disabled: hsla(5, 58%, 43%, 0.993);
+    --c-box-shadow: hsl(0, 0%, 84%);
+
+    --font-normal: 'Source Sans Pro', sans-serif;
+    --font-display: 'Patua One', cursive;
+
+
+    font-size: 62.5%;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-normal);
+    font-size: 1.6rem;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(var(--p-color), var(--s-color), white);
+}
+
+.h1Container {
+    letter-spacing: 0.2rem;
+    margin-bottom: 3rem;
+    font-size: 4rem;
+    font-family: var(--font-display);
+}
+
+.h1Container img {
+    width: 3.2rem;
+    margin-right: 0.5rem;
+}
+
+.card {
+    width: min(40rem, 80%);
+    height: 35rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.4rem;
+    box-shadow: 0rem 0rem 1rem var(--c-box-shadow);
+}
+
+.card,
+.card form {
+    display: grid;
+}
+
+.card form label {
+    font-size: 2rem;
+}
+
+.card form input[type="button"] {
+    height: 4rem;
+    border: none;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    font-family: var(--font-normal);
+    background-color: var(--c-input-btn);
+    margin-top: 2rem;
+    border-radius: 5rem;
+    transition: background-color 200ms, color 200ms;
+}
+
+.card form input[type="button"]:hover {
+    cursor: pointer;
+    transform: scale(0.99, 0.95);
+}
+
+.card form input[type="button"]:disabled {
+    color: hsl(0, 0%, 86%);
+    background-color: var(--c-input-btn-disabled);
+    transition: background-color 200ms, color 200ms;
+}
+
+.card form input[type="button"]:disabled:hover {
+    cursor: default;
+    transform: scale(1, 1);
+}
+
+.errorMessage {
+    opacity: 0;
+    visibility: visible;
+    position: relative;
+    top: -1.5rem;
+    left: 0;
+    text-align: center;
+    color: var(--c-error-msg);
+    transition: top 150ms, opacity 150ms;
+}
+
+.errorMessage.showErrorMessage {
+    opacity: 1;
+    visibility: visible;
+    top: 0rem;
+    transition: top 150ms, opacity 150ms;
+}
+
+.cardInput {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 100%;
+    border: 2px solid hsl(0, 0%, 36%);
+    border-radius: 0.4rem;
+}
+
+.cardInput input {
+    padding-left: 0.5rem;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+}
+
+.cardInput i {
+    align-self: center;
+    justify-self: center;
+    color: hsl(0, 0%, 36%);
+}
+
+.cardFooter {
+    align-self: flex-end;
+    margin-bottom: 2rem;
+}
+
+.cardFooter a{
+    margin-left:0.5rem;
+    text-decoration: none;
+}
