@@ -7,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="https://kit.fontawesome.com/3797641237.js" crossorigin="anonymous"></script>
-
-    
-    <script defer src="../static/js/app.js"></script>
 </head>
 
-<body>
+<body id="login">
     <div class="container">
         <h1 class="h1Container">
             <img src="../static/assets/d20.png" alt="dado de RPG">
@@ -22,24 +18,27 @@
         <div class="card">
             <form>
                 <label for="inputEmail">Email</label>
-                <div class="cardInput">
+                <div class="inputField">
                     <i class="fa-solid fa-unlock"></i>
-                    <input type="email" name="inputEmail" id="inputEmail">
+                    <input type="email" name="inputEmail" id="inputEmail" placeholder="Informe seu email">
                 </div>
                 <label for="inputPassword">Senha</label>
-                <div class="cardInput">
+                <div class="inputField">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="password" name="inputPassword" id="inputPassword">
+                    <input type="password" name="inputPassword" id="inputPassword" placeholder="informe sua senha">
                 </div>
-                <p class="errorMessage">Email e/ou senha invalidas</p>
-                <input type="button" value="login" disabled="true">
+                <p class="errorMessage">errorMessage</p>
+                <input class="button" type="button" value="login">
             </form>
             <div class="cardFooter">
                 <!-- link para a pagina de cadastro -->
-                <p>Não tem conta?<a href="singup.html">Inscreva-se</a></p>
+                <p>Não tem conta?<a href="sign_up.html">Inscreva-se</a></p>
             </div>
         </div>
     </div>
+
+    <script defer src="../static/js/app.js"></script>
+    <script src="https://kit.fontawesome.com/3797641237.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

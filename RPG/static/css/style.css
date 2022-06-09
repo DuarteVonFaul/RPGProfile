@@ -1,5 +1,7 @@
+/* || Imports */
 @import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Source+Sans+Pro:wght@400;700&display=swap');
 
+/* || General styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,7 @@
 }
 
 :root {
+    /* || Color palette */
     --p-color: hsl(38, 100%, 92%);
 
     --s-color: hsl(0, 0%, 98%);
@@ -18,10 +21,11 @@
     --c-input-btn-disabled: hsla(5, 58%, 43%, 0.993);
     --c-box-shadow: hsl(0, 0%, 84%);
 
+    /* || Font styles */
     --font-normal: 'Source Sans Pro', sans-serif;
     --font-display: 'Patua One', cursive;
 
-
+    /* turn 1rem == 10px */
     font-size: 62.5%;
 }
 
@@ -36,9 +40,11 @@ body {
     font-size: 1.6rem;
 }
 
+/* || General container style */
 .container {
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,19 +53,25 @@ body {
 
 .container::before {
     content: "";
+
     width: 100%;
     height: 100%;
+
+    background: linear-gradient(var(--p-color), var(--s-color), white);
+
     position: absolute;
     top: 0;
     left: 0;
+
     z-index: -1;
-    background: linear-gradient(var(--p-color), var(--s-color), white);
 }
 
 .h1Container {
-    letter-spacing: 0.2rem;
     margin-bottom: 3rem;
+
+    text-align: center;
     font-size: 4rem;
+    letter-spacing: 0.2rem;
     font-family: var(--font-display);
 }
 
@@ -68,12 +80,18 @@ body {
     margin-right: 0.5rem;
 }
 
+
+/* || General card style */
 .card {
     width: min(40rem, 80%);
     height: 35rem;
+
     padding: 2rem;
+
     background-color: white;
+
     border-radius: 0.4rem;
+
     box-shadow: 0rem 0rem 1rem var(--c-box-shadow);
 }
 
@@ -86,71 +104,90 @@ body {
     font-size: 2rem;
 }
 
-.card form input[type="button"] {
+/* || General button style */
+.button {
     height: 4rem;
-    border: none;
+
+
     color: white;
+    background-color: var(--c-input-btn);
+
+    border: none;
+    border-radius: 5rem;
+
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: 0.1rem;
     font-family: var(--font-normal);
-    background-color: var(--c-input-btn);
-    margin-top: 2rem;
-    border-radius: 5rem;
+
     transition: background-color 200ms, color 200ms;
 }
 
-.card form input[type="button"]:hover {
+.button:hover {
     cursor: pointer;
     transform: scale(0.99, 0.95);
 }
 
-.card form input[type="button"]:disabled {
+/* || General disabled button style */
+.button:disabled {
     color: hsl(0, 0%, 86%);
     background-color: var(--c-input-btn-disabled);
+
     transition: background-color 200ms, color 200ms;
 }
 
-.card form input[type="button"]:disabled:hover {
+.button:disabled:hover {
     cursor: default;
     transform: scale(1, 1);
 }
 
+/* || General errorMessage style */
 .errorMessage {
+    color: var(--c-error-msg);
+
     opacity: 0;
-    visibility: visible;
+    visibility: hidden;
+
     position: relative;
     top: -1.5rem;
     left: 0;
+
     text-align: center;
-    color: var(--c-error-msg);
+
     transition: top 150ms, opacity 150ms;
 }
 
-.errorMessage.showErrorMessage {
+.showErrorMessage {
     opacity: 1;
     visibility: visible;
+
     top: 0rem;
+
     transition: top 150ms, opacity 150ms;
 }
 
-.cardInput {
+/* || General input field style */
+.inputField {
     margin-bottom: 2rem;
+
     display: grid;
     grid-template-columns: 10% 90%;
     grid-template-rows: 100%;
+
     border: 2px solid hsl(0, 0%, 36%);
     border-radius: 0.4rem;
 }
 
-.cardInput input {
+.inputField input {
     padding-left: 0.5rem;
-    outline: none;
-    border: none;
+
     font-size: 1.6rem;
+
+    border: none;
+    outline: none;
 }
 
-.cardInput i {
+.inputField i {
     align-self: center;
     justify-self: center;
     color: hsl(0, 0%, 36%);
