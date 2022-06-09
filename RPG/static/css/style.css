@@ -56,6 +56,34 @@ body {
     background: linear-gradient(var(--p-color), var(--s-color), white);
 }
 
+.bgContainerImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 35%;
+    transform: scale(0.5, 0.5) rotate(-30deg);
+    z-index: -1;
+    /* animation: diceAnimation 2s linear 0s infinite normal none;  */
+}
+
+.bgContainerImg.second{
+    top: -90%;
+    left: auto;
+    right: 0;
+}
+
+@keyframes diceAnimation {
+    form{
+       top: 0;
+    }
+    50%{
+        top: 2.5rem;
+    }
+    to{
+       top: 0;
+    }
+}
+
 .h1Container {
     letter-spacing: 0.2rem;
     margin-bottom: 3rem;
@@ -161,7 +189,7 @@ body {
     margin-bottom: 2rem;
 }
 
-.cardFooter a{
-    margin-left:0.5rem;
+.cardFooter a {
+    margin-left: 0.5rem;
     text-decoration: none;
 }

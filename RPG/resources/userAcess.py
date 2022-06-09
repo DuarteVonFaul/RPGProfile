@@ -16,6 +16,7 @@ def init(app):
     
     @app.route("/api/v1/login", methods=['POST'])
     def loginform():
+        print(request.form)
         email = request.form.get('email_login')
         password = request.form.get('password_login')
         return login(UserAcess(email, password))

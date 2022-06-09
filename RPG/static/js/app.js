@@ -7,15 +7,16 @@ const init = () => {
 
     if (submitButton) {
         submitButton.addEventListener('click', (e) => {
+            console.log(inputEmail.value, inputPassword.value)
             e.preventDefault()
-            fetch('https://reqres.in/api/login', {
+            fetch('/api/v1/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: inputEmail.value,
-                    password: inputPassword.value
+                    'email_login': inputEmail.value,
+                    'password_login': inputPassword.value
                 })
             }).then((response) => {
                 if (response.ok) {
