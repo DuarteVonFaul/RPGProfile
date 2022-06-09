@@ -5,14 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
-requests = "*"
-gcloud = "*"
-oauth2client = "*"
-requests-toolbelt = "*"
-python-jwt = "*"
-pycryptodome = "*"
+pyrebase = {file = "https://github.com/DuarteVonFaul/Pyrebase/archive/master.zip"}
 
 [dev-packages]
+python-dotenv = "*"
 
 [requires]
 python_version = "3.10"

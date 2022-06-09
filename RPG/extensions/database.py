@@ -1,33 +1,32 @@
-from .Pyrebase.pyrebase import pyrebase
+import pyrebase
 
+firebaseConfig = {
+            "apiKey": "AIzaSyAG8_VMsDMXb6aINZ4fMLatHsQ8RRAmYYI",
+            "authDomain": "basenayze.firebaseapp.com",
+            "databaseURL": f"https://basenayze.firebaseio.com/",
+            "storageBucket": "basenayze.appspot.com",
 
+            }
+
+firebase = pyrebase.initialize_app(firebaseConfig)
 
 class DataBase():
 
     def __init__(self,info) -> None:
-
-        self.config = {
-            "apiKey": "AIzaSyAG8_VMsDMXb6aINZ4fMLatHsQ8RRAmYYI",
-            "authDomain": "basenayze.firebaseapp.com",
-            "databaseURL": f"https://basenayze.firebaseio.com/{info}",
-            "storageBucket": "basenayze.appspot.com",
-
-            }
-        self.firebase = pyrebase.initialize_app(self.config)
-        self.dados = self.firebase.database()
+        self.dados = firebase.database()
     
-    def escrever(self,dict:dict):
+    def create(self,dict:dict,__group__,__key__):
         try:
-            self.dados.child().update(dict)
-            return str(True)
+            self.dados.child(__group__).child(__key__).set(dict)
+            return {'status':200}
         except:
-            return str(False)
+            return {'status':500}
     
-    def buscar(self, nome:str):
-        return self.dados.child(nome).get()
+    def get(self,__group__,__key__):
+        return self.dados.child(__group__).child(__key__).get()
     
-    def buscar_todos(self):
-        return self.dados.child().get()
+    def getall(self,__group__):
+        return self.dados.child(__group__).get()
 
 
 
