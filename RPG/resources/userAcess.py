@@ -16,21 +16,21 @@ def init(app):
     
     @app.route("/api/v1/login", methods=['POST'])
     def loginform():
-        print(request.form)
-        email = request.form.get('email_login')
-        password = request.form.get('password_login')
+        print()
+        email = request.get_json()['email_login']
+        password = request.get_json()['password_login']
         return login(UserAcess(email, password))
 
     @app.route("/api/v1/register", methods=['POST'])
     def registerUser():
-        email = request.form.get('email_register')
-        password = request.form.get('password_register')
+        email = request.get_json()['email_register']
+        password = request.get_json()['password_register']
         return register(UserAcess(email,password))
 
 
-    @app.route("/api/v1/redpass")
+    @app.route("/api/v1/redefine-password", methods=['POST'])
     def redefineform():
-        email = request.form.get('email_redefine')
+        email = request.get_json()['email_redefine']
         return redefine_password(email)
 
     
