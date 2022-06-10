@@ -23,12 +23,15 @@ class Appearance():
 
 class Historic():
 
-    def __init__(self, name:str, breed:str, description:str, languages:List) -> None:
-        self.name        = name
-        self.breed       = breed        #Raça
-        self.description = description
-        self.languages   = languages
+    def __init__(self, name:str, breed:str, description:str, languages:List, bonus:List[dict], benefitsTable:List[dict]) -> None:
+        self.name           = name
+        self.breed          = breed        #Raça
+        self.description    = description
+        self.languages      = languages
+        self.bonus          = bonus
+        self.benefitsTable  = benefitsTable
         pass
+
 
 
 class Classe():
