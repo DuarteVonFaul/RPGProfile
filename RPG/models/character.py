@@ -9,7 +9,8 @@ from RPG.models.attribute import Attribute
 
 attrList = ['cunning', 'communication', 'constitution', 'dexterity', 'strength', 'magic', 'perception', 'will']
 
-
+{
+}
 
 class Appearance():
 

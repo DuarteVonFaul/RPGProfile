@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 pyrebase4 = "*"
 pycryptodomex = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 python-dotenv = "*"
