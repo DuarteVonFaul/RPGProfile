@@ -49,7 +49,9 @@ def init(app):
     def registerTemplate():
         return render_template('sign_up.html')
 
-    
+    @app.route("/home")
+    def registerTemplate():
+        return render_template('home.html')
 
 
     pass
