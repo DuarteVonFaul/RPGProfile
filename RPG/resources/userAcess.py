@@ -49,7 +49,6 @@ def init(app):
     def registerTemplate():
         return render_template('sign_up.html')
 
-    
 
 
     pass
