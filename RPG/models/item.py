@@ -1,5 +1,9 @@
 from enum import Enum
 from typing import Optional
+from sqlalchemy import Column, Integer, String, JSON
+
+
+from RPG.extensions.database import Base
 
 
 class  itemType(Enum):
@@ -22,44 +26,54 @@ weaponGroup = [ 'BOW',          #Arco
                 'CAVALARY',     #Cavalaria
                 'AX']           #Machado
 
-class Item():
-
-    def __init__(self, name:str, description:str, price:int) -> None:
-
-        self.name       = name
-        self.descriptio = description
-        self.price      = price
-        self.type       = itemType.ITEM.value
 
 
+class Item(Base):
 
-class Armor(Item):
+    __tablename__ = 'Items'
 
-    def __init__(self, name: str, description: str, price: int, defense:int, punishment:int) -> None:
-        super().__init__(name, description, price)
-        self.defense = defense
-        self.punishment = punishment
-        self.type = itemType.ARMOR.value
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    price = Column(Integer)
+    type  = Column(String)
 
-class Shield(Item):
 
-    def __init__(self, name: str, description: str, price: int, defense:int )-> None:
-        super().__init__(name, description, price)
-        self.defense = defense
-        self.type = itemType.SHIELD.value
+class Armor(Base):
 
-class Weapon(Item):
+    __tablename__ = 'Armors'
 
-    def __init__(self, name: str, description: str, price: int, damage:str, group:int, minimum_strength:Optional[int] = None) -> None:
-        super().__init__(name, description, price)
-        self.damage = damage
-        self.group = weaponGroup[group]
-        self.type = itemType.WEAPON.value
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    price = Column(Integer)
+    type  = Column(String)
+    defense = Column(Integer)
+    punishment = Column(Integer)
 
-        if minimum_strength != None:
-            self.minimum_strength = minimum_strength
-        else:
-            self.minimum_strength = False
+class Shield(Base):
+
+    __tablename__ = 'Shields'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    price = Column(Integer)
+    type  = Column(String)
+    defense = Column(Integer)
+
+class Weapon(Base):
+
+    __tablename__ = 'Weapons'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    price = Column(Integer)
+    type  = Column(String)
+    damage = Column(String)
+    group = Column(String)
+    minimum_strength = Column(Integer)
 
 
 

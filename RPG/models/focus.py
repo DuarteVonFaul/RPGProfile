@@ -1,10 +1,16 @@
+from sqlalchemy import Column, Integer, String
+
+
+from RPG.extensions.database import Base
+
 
 groupList = ['cunning', 'communication', 'constitution', 'dexterity', 'strength', 'magic', 'perception', 'will']
 
-class Focus():
+class Focus(Base):
 
-    def __init__(self, name:str, description:str, group:int) -> None:
+    __tablename__ = 'Focus'
 
-            self.name           = name
-            self.description    = description
-            self.group          = groupList[group]
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    group = Column(String)

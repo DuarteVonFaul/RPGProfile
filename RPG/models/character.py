@@ -1,16 +1,13 @@
 from typing import List, Optional
 import random
-
+from sqlalchemy import Column, Integer, String, JSON
 
 from RPG.config import  attrGenerator,ClassesType
 from RPG.models.attribute import Attribute
-
+from RPG.extensions.database import Base
 
 
 attrList = ['cunning', 'communication', 'constitution', 'dexterity', 'strength', 'magic', 'perception', 'will']
-
-{
-}
 
 class Appearance():
 
@@ -21,18 +18,27 @@ class Appearance():
         self.height = height
         pass
 
+class TB_Historic(Base):
+
+    __tablename__ = 'Historics'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    breed = Column(String)
+    description = Column(String)
+    languages = Column(String)
+    bonus = Column(JSON)
+    benefitsTable = Column(JSON)
 
 class Historic():
 
-    def __init__(self, name:str, breed:str, description:str, languages:List, bonus:List[dict], benefitsTable:List[dict]) -> None:
+    def __init__(self, breed:str, description:str, name:str, languages) -> None:
         self.name           = name
-        self.breed          = breed        #Raça
+        self.breed          = breed
         self.description    = description
         self.languages      = languages
-        self.bonus          = bonus
-        self.benefitsTable  = benefitsTable
-        pass
 
+        pass
 
 
 class Classe():
@@ -65,6 +71,9 @@ class Character():
         self.primaryEquip   = ''
         self.secondaryEquip = ''
         self.bag            = []
+
+        for key, value in kwargs.items():
+            setattr(self,key,value)
 
         
         pass

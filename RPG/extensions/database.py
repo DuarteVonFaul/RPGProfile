@@ -1,4 +1,7 @@
 import pyrebase
+from sqlalchemy             import create_engine
+from sqlalchemy.orm         import Session
+from sqlalchemy.ext.declarative import declarative_base
 
 firebaseConfig = {
             "apiKey": "AIzaSyAG8_VMsDMXb6aINZ4fMLatHsQ8RRAmYYI",
@@ -10,7 +13,7 @@ firebaseConfig = {
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 
-class DataBase():
+class FireBase():
 
     def __init__(self,info) -> None:
         self.dados = firebase.database()
@@ -27,6 +30,26 @@ class DataBase():
     
     def getall(self,__group__,__user__):
         return self.dados.child(__group__).get(__user__)
+
+class Database():
+    def __init__(self, path) -> None:
+        self.path = path
+
+    def get_engine(self):
+        return create_engine(f"sqlite:///{self.path}")
+
+
+    def get_base(self):
+        Base = declarative_base()
+        return Base
+    
+    def get_session(self):
+        return Session(self.get_engine())
+    
+
+RPGBase = Database('./sqlite.sqlite3')
+Base = RPGBase.get_base()
+MySession = RPGBase.get_session()
 
 
 

@@ -4,20 +4,20 @@ import random
 
 class ClassesType(Enum):
 
-    Mago = {'name':'Mago',
+    Mago = {'name':'mago',
             'attrPrimary':['cunning', 'magic', 'will'],
             'life':20,
             'Mana':random.randint(11, 16),
             'defense':10
             }
     
-    Ladino = {'name':'Ladino',
+    Ladino = {'name':'ladino',
             'attrPrimary':['communication', 'dexterity', 'perception'],
             'life':25,
             'defense':10
             }
     
-    Guerreiro = {'name':'Guerreiro',
+    Guerreiro = {'name':'guerreiro',
             'attrPrimary':['constitution', 'dexterity', 'strength'],
             'life':30,
             'defense':10
@@ -44,6 +44,27 @@ def attrGenerator(argument:int):
        case 16     : return 3
        case 17     : return 3
        case 18     : return 4
+
+groupList = ['cunning', 
+'communication', 
+'constitution', 
+'dexterity', 
+'strength', 
+'magic', 
+'perception', 
+'will']
+
+def groupFocus(argument:str):
+    match argument.upper():
+       case 'ASTÚCIA'     : return 'cunning'
+       case 'COMUNICAÇÃO' : return 'communication'
+       case 'CONSTITUIÇÃO': return 'constitution'
+       case 'DESTREZA'    : return 'dexterity'
+       case 'FORÇA'       : return 'strength'
+       case 'MAGIA'       : return 'magic'
+       case 'PERCEPÇÃO'   : return 'perception'
+       case 'VONTADE'     : return 'will'
+
 
 def to_dict(obj):
     # Se for um objeto, transforma num dict
