@@ -1,0 +1,58 @@
+@mixin fullSize {
+    width: percentage(1);
+    height: percentage(1);
+}
+
+@mixin overflowX( $overflor,$scrollWidth){
+    overflow: $overflor;
+    scrollbar-width: $scrollWidth;
+}
+
+@mixin flexOptions($align, $justify, $direction) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin gridOptions($t-columns, $t-rows){
+    display: grid;
+    grid-template-columns: $t-columns;
+    grid-template-rows: $t-rows;
+}
+
+@mixin positionAbsolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@mixin hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@mixin visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@mixin stylizedButton {
+    align-items: center;
+
+    font-weight: 700;
+    font-size: toRem(30);
+    font-family: $font-normal;
+    text-transform: uppercase;
+
+    color: $s-color;
+    background-color: $c-input-btn;
+
+    border: 3px solid $c-input-btn;
+    border-radius: toRem(5);
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(0.9, 0.9);
+    }
+}

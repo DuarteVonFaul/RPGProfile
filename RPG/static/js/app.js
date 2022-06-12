@@ -86,6 +86,7 @@ const fetchUserLoginValidation= (data)=>{
         if(!(data.status == 200)){
             throw Error('email/senha informados são invalidos.')
         }
+        console.log(data)
         saveFetchUserData(data)
         //window.location.href= '/home'
     }catch(error){
@@ -106,8 +107,7 @@ const fetchUserRegisterValidation= (data)=>{
 
 const saveFetchUserData= (data)=>{
     const date = new Date(Date.now() + (3600 * 1000 * 24))
-    console.log(data)
-    document.cookie= `user= ${data}; expires= ${date}; SameSite=None; Secure`
+    document.cookie= `idTokenAuthenticator= ${data.info.idToken}; expires= ${date}; SameSite=None; Secure`
 }
 
 /* || Funcoes de uso geral */

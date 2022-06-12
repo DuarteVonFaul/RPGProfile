@@ -1,0 +1,7 @@
+// Utilite functions 
+
+//convert px to rem
+@function toRem($value) {
+    $remValue: ($value / 10)+rem;
+    @return $remValue;
+}

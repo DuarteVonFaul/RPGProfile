@@ -1,204 +1,405 @@
-/* || Imports */
-@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Source+Sans+Pro:wght@400;700&display=swap');
-
-/* || General styles */
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&family=Source+Sans+Pro:wght@400;700&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 :root {
-    /* || Color palette */
-    --p-color: hsl(38, 100%, 92%);
-
-    --s-color: hsl(0, 0%, 98%);
-    --s-ligth: hsl(0, 0%, 100%);
-    --s-dark: hsl(36, 23%, 74%);
-
-    --c-error-msg: hsl(349, 93%, 54%);
-    --c-input-btn: hsl(5, 97%, 66%);
-    --c-input-btn-disabled: hsla(5, 58%, 43%, 0.993);
-    --c-box-shadow: hsl(0, 0%, 84%);
-
-    /* || Font styles */
-    --font-normal: 'Source Sans Pro', sans-serif;
-    --font-display: 'Patua One', cursive;
-
-    /* turn 1rem == 10px */
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: var(--font-normal);
-    font-size: 1.6rem;
+  font: "Source Sans Pro", sans-serif;
+  font-size: 1.6rem;
 }
 
-/* || General container style */
 .container {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.container::before {
-    content: "";
-
-    width: 100%;
-    height: 100%;
-
-    background: linear-gradient(var(--p-color), var(--s-color), white);
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: -1;
+.container:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff0d6), color-stop(#fafafa), to(white));
+  background: linear-gradient(#fff0d6, #fafafa, white);
+  z-index: -1;
 }
 
-.h1Container {
-    margin-bottom: 3rem;
-
-    text-align: center;
-    font-size: 4rem;
-    letter-spacing: 0.2rem;
-    font-family: var(--font-display);
+.container h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 0.2rem;
+  font-family: "Patua One", cursive;
 }
 
-.h1Container img {
-    width: 3.2rem;
-    margin-right: 0.5rem;
+.container img {
+  width: 3.2rem;
+  margin-right: 0.5rem;
 }
 
-
-/* || General card style */
 .card {
-    width: min(40rem, 80%);
-    height: 35rem;
-
-    padding: 2rem;
-
-    background-color: white;
-
-    border-radius: 0.4rem;
-
-    box-shadow: 0rem 0rem 1rem var(--c-box-shadow);
+  display: -ms-grid;
+  display: grid;
+  width: 80%;
+  max-width: 40rem;
+  height: 35rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.4rem;
+  -webkit-box-shadow: 0 0 1rem #d6d6d6;
+          box-shadow: 0 0 1rem #d6d6d6;
 }
 
-.card,
 .card form {
-    display: grid;
+  display: -ms-grid;
+  display: grid;
 }
 
 .card form label {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
-/* || General button style */
 .button {
-    height: 4rem;
-
-
-    color: white;
-    background-color: var(--c-input-btn);
-
-    border: none;
-    border-radius: 5rem;
-
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: 0.1rem;
-    font-family: var(--font-normal);
-
-    transition: background-color 200ms, color 200ms;
+  height: 4rem;
+  color: white;
+  background-color: #fc6254;
+  border: none;
+  border-radius: 5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-transition: background-color 200ms, color 200ms;
+  transition: background-color 200ms, color 200ms;
 }
 
 .button:hover {
-    cursor: pointer;
-    transform: scale(0.99, 0.95);
+  cursor: pointer;
+  -webkit-transform: scale(0.99, 0.95);
+          transform: scale(0.99, 0.95);
 }
 
-/* || General disabled button style */
 .button:disabled {
-    color: hsl(0, 0%, 86%);
-    background-color: var(--c-input-btn-disabled);
-
-    transition: background-color 200ms, color 200ms;
+  color: #dbdbdb;
+  background-color: rgba(173, 57, 46, 0.993);
+  -webkit-transition: background-color 200ms, color 200ms;
+  transition: background-color 200ms, color 200ms;
 }
 
 .button:disabled:hover {
-    cursor: default;
-    transform: scale(1, 1);
+  cursor: default;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
 }
 
-/* || General errorMessage style */
 .errorMessage {
-    color: var(--c-error-msg);
-
-    opacity: 0;
-    visibility: hidden;
-
-    position: relative;
-    top: -1.5rem;
-    left: 0;
-
-    text-align: center;
-
-    transition: top 150ms, opacity 150ms;
+  opacity: 0;
+  visibility: hidden;
+  color: #f71d45;
+  position: relative;
+  top: -1.5rem;
+  left: 0;
+  text-align: center;
+  -webkit-transition: top 150ms, opacity 150ms;
+  transition: top 150ms, opacity 150ms;
 }
 
-.showErrorMessage {
-    opacity: 1;
-    visibility: visible;
-
-    top: 0rem;
-
-    transition: top 150ms, opacity 150ms;
+.errorMessage.showErrorMessage {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+  -webkit-transition: top 150ms, opacity 150ms;
+  transition: top 150ms, opacity 150ms;
 }
 
-/* || General input field style */
 .inputField {
-    margin-bottom: 2rem;
-
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 100%;
-
-    border: 2px solid hsl(0, 0%, 36%);
-    border-radius: 0.4rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 90%;
+      grid-template-columns: 10% 90%;
+  -ms-grid-rows: 100%;
+      grid-template-rows: 100%;
+  margin-bottom: 2rem;
+  border: 2px solid #5c5c5c;
+  border-radius: 0.4rem;
+  background-color: white;
 }
 
 .inputField input {
-    padding-left: 0.5rem;
-
-    font-size: 1.6rem;
-
-    border: none;
-    outline: none;
+  padding-left: 0.5rem;
+  font-size: 1.6rem;
+  border: none;
+  outline: none;
 }
 
 .inputField i {
-    align-self: center;
-    justify-self: center;
-    color: hsl(0, 0%, 36%);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  color: #5c5c5c;
 }
 
 .cardFooter {
-    align-self: flex-end;
-    margin-bottom: 2rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-bottom: 2rem;
 }
 
 .cardFooter a {
-    margin-left: 0.5rem;
-    text-decoration: none;
+  margin-left: 0.5rem;
+  text-decoration: none;
 }
+
+.nextButton {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: "Source Sans Pro", sans-serif;
+  text-transform: uppercase;
+  color: #fafafa;
+  background-color: #fc6254;
+  border: 3px solid #fc6254;
+  border-radius: 0.5rem;
+}
+
+.nextButton:hover {
+  cursor: pointer;
+  -webkit-transform: scale(0.9, 0.9);
+          transform: scale(0.9, 0.9);
+}
+
+.nextButton i {
+  justify-self: flex-end;
+}
+
+.previousButton {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: "Source Sans Pro", sans-serif;
+  text-transform: uppercase;
+  color: #fafafa;
+  background-color: #fc6254;
+  border: 3px solid #fc6254;
+  border-radius: 0.5rem;
+}
+
+.previousButton:hover {
+  cursor: pointer;
+  -webkit-transform: scale(0.9, 0.9);
+          transform: scale(0.9, 0.9);
+}
+
+.previousButton i {
+  justify-self: flex-start;
+}
+
+.changeButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 95%;
+  position: absolute;
+  z-index: 4;
+}
+
+.changeButton button {
+  width: 25%;
+  max-width: 8rem;
+  height: 5rem;
+}
+
+#char_creator .container {
+  background-color: linear-gradient(#fff0d6, #fafafa, white);
+}
+
+#char_creator .container:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: -1;
+}
+
+#char_creator .cardSlider {
+  width: 100%;
+  height: 100%;
+  max-width: 37.5rem;
+  max-height: 81.2rem;
+  position: relative;
+  overflow: auto;
+}
+
+#char_creator .cards {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (37.5rem)[3];
+      grid-template-columns: repeat(3, 37.5rem);
+  -ms-grid-rows: 1;
+      grid-template-rows: 1;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  -webkit-transition: all 350ms;
+  transition: all 350ms;
+}
+
+#char_creator .card {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  position: relative;
+  width: 100%;
+  height: 95%;
+  max-width: 37.5rem;
+  max-height: 81.2rem;
+  overflow: hidden;
+}
+
+#char_creator .card .titleImg {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 80%;
+}
+
+#char_creator .card .charImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 85%;
+  height: 65%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  z-index: 3;
+}
+
+#char_creator .card .charImg :first-child {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#char_creator .card .charImg :last-child {
+  width: 100%;
+  height: 15%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#char_creator .card .card {
+  border: 1px solid red;
+  position: relative;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 100%;
+  height: 40%;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#char_creator .card .card h2 {
+  margin-top: 2rem;
+  font-size: 3.2rem;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+#char_creator .card .card .inputField {
+  width: 100%;
+  height: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0;
+}
+
+#char_creator .card .card .errorMessage {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -35%);
+          transform: translate(-50%, -35%);
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+}
+
+#char_creator .card .card.errorDetected h2 {
+  color: #f71d45;
+}
+
+#char_creator .card .card.errorDetected .inputField {
+  border: 2px solid #f71d45;
+}
+
+#char_creator .card .card.errorDetected .inputField input,
+#char_creator .card .card.errorDetected .inputField i {
+  color: #f71d45;
+}
+
+#char_creator .card .card.errorDetected .errorMessage {
+  opacity: 1;
+  visibility: visible;
+  top: 45%;
+  -webkit-transform: translate(-50%, -45%);
+          transform: translate(-50%, -45%);
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+}
+/*# sourceMappingURL=style.css.map */

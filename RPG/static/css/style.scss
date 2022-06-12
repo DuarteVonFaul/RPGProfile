@@ -1,0 +1,339 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Source+Sans+Pro:wght@400;700&display=swap');
+@import "./_mixins.scss";
+@import "./functions";
+
+// Variables declaration
+// Color compose
+$p-color: hsl(38, 100%, 92%);
+
+$s-color: hsl(0, 0%, 98%);
+$s-ligth: hsl(0, 0%, 100%);
+$s-dark: hsl(36, 23%, 74%);
+
+$c-error-msg: hsl(349, 93%, 54%);
+$c-input-btn: hsl(5, 97%, 66%);
+$c-input-btn-disabled: hsla(5, 58%, 43%, 0.993);
+$c-box-shadow: hsl(0, 0%, 84%);
+$c-input-field-border: hsl(0, 0%, 36%);
+
+// Font styles 
+$font-normal: 'Source Sans Pro', sans-serif;
+$font-display: 'Patua One', cursive;
+
+// General styles 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: percentage(0.625);
+}
+
+html,
+body {
+    @include fullSize;
+}
+
+body {
+    font: $font-normal;
+    font-size: toRem(16);
+}
+
+// General container style
+.container {
+    @include fullSize;
+    @include flexOptions(center, center, column);
+
+    &:before {
+        @include fullSize;
+        @include positionAbsolute;
+        content: "";
+        background: linear-gradient($p-color, $s-color, white);
+        z-index: -1;
+    }
+
+    h1 {
+        margin-bottom: toRem(30);
+        text-align: center;
+        font-size: toRem(40);
+        letter-spacing: toRem(2);
+        font-family: $font-display;
+    }
+
+    img {
+        width: toRem(32);
+        margin-right: toRem(5);
+    }
+}
+
+// General card style
+.card {
+    display: grid;
+    width: percentage($number: 0.8);
+    max-width: toRem(400);
+    height: toRem(350);
+    padding: toRem(20);
+    background-color: white;
+    border-radius: toRem(4);
+    box-shadow: 0 0 toRem(10) $c-box-shadow;
+
+    form {
+        display: grid;
+
+        label {
+            font-size: toRem(20);
+        }
+    }
+}
+
+// General button style
+.button {
+    height: toRem(40);
+
+    color: white;
+    background-color: $c-input-btn;
+
+    border: none;
+    border-radius: toRem(50);
+
+    font-size: toRem(22);
+    font-weight: 700;
+    letter-spacing: toRem(1);
+    font-family: $font-normal;
+
+    transition: background-color 200ms, color 200ms;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(0.99, 0.95);
+    }
+
+    &:disabled {
+        color: hsl(0, 0%, 86%);
+        background-color: $c-input-btn-disabled;
+
+        transition: background-color 200ms, color 200ms;
+    }
+
+    &:disabled:hover {
+        cursor: default;
+        transform: scale(1, 1);
+    }
+}
+
+// General errorMessage style
+.errorMessage {
+    @include hidden;
+    color: $c-error-msg;
+    position: relative;
+    top: toRem(-15);
+    left: 0;
+    text-align: center;
+    transition: top 150ms, opacity 150ms;
+
+    &.showErrorMessage {
+        @include visible;
+        top: 0;
+        transition: top 150ms, opacity 150ms;
+    }
+}
+
+// General input field style
+.inputField {
+    @include gridOptions(10% 90%, 100%);
+    margin-bottom: toRem(20);
+    border: 2px solid $c-input-field-border;
+    border-radius: toRem(4);
+
+    background-color: white;
+
+    input {
+        padding-left: toRem(5);
+        font-size: toRem(16);
+        border: none;
+        outline: none;
+    }
+
+    i {
+        align-self: center;
+        justify-self: center;
+        color: $c-input-field-border;
+    }
+}
+
+.cardFooter {
+    align-self: flex-end;
+    margin-bottom: toRem(20);
+
+    a {
+        margin-left: toRem(5);
+        text-decoration: none;
+    }
+}
+
+// Back/next button style
+.nextButton {
+    @include stylizedButton;
+
+    i {
+        //@include hidden
+        justify-self: flex-end;
+    }
+}
+
+.previousButton {
+    @include stylizedButton;
+
+    i {
+        //@include hidden
+        justify-self: flex-start;
+    }
+}
+
+.changeButton {
+    @include flexOptions(center, space-between, row);
+    width: 95%;
+    position: absolute;
+    z-index: 4;
+
+    button {
+        width: 25%;
+        max-width: 8rem;
+        height: 5rem;
+    }
+}
+
+// Character Creator styles
+#char_creator {
+    .container {
+        background-color: linear-gradient($p-color, $s-color, white);
+
+        &:before {
+            @include fullSize;
+            @include positionAbsolute;
+            content: "";
+            // inserir depois a imagem personalizada
+            z-index: -1;
+        }
+    }
+
+    .cardSlider {
+        @include fullSize;
+        max-width: 37.5rem;
+        max-height: 81.2rem;
+        position: relative;
+        overflow: auto;
+    }
+
+    .cards {
+        @include fullSize;
+        @include gridOptions(repeat(3, 37.5rem), 1);
+        column-gap: 2rem;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        transition: all 350ms;
+    }
+
+    .card {
+       
+        align-self: center;
+
+        position: relative;
+        
+        width: 100%;
+        height: 95%;
+        
+        max-width: 37.5rem;
+        max-height: 81.2rem;
+
+        overflow: hidden;
+
+        .titleImg {
+            justify-self: center;
+            width: 80%;
+        }
+
+        .charImg {
+            display: flex;
+            width: 85%;
+            height: 65%;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 3;
+
+            :first-child {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+
+            :last-child {
+                width: 100%;
+                height: 15%;
+                align-self: flex-end;
+            }
+        }
+
+        .card {
+            border: 1px solid red;
+            position: relative;
+            align-self: flex-end;
+            justify-self: center;
+            width: 100%;
+            height: 40%;
+            font-family: $font-normal;
+            padding: 0;
+            box-shadow: none;
+
+            h2 {
+                margin-top: 2rem;
+                font-size: toRem(32);
+                justify-self: center;
+            }
+
+            .inputField {
+                @include fullSize;
+                align-self: flex-end;
+                margin: 0;
+            }
+
+            .errorMessage {
+                @include hidden;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -35%);
+                transition: all 150ms;
+            }
+
+            &.errorDetected {
+                h2 {
+                    color: $c-error-msg;
+                }
+
+                .inputField {
+                    border: 2px solid $c-error-msg;
+
+                    input,
+                    i {
+                        color: $c-error-msg;
+                    }
+                }
+
+                .errorMessage {
+                    @include visible;
+                    top: 45%;
+                    transform: translate(-50%, -45%);
+                    transition: all 150ms;
+                }
+            }
+
+        }
+    }
+}

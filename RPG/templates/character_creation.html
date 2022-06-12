@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de personagem</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body id="char_creator">
+    <div class="container">
+        <div class="cardSlider">
+            <div class="cards">
+                <div class="card">
+                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
+                    <div class="charImg">
+                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
+                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
+                    </div>
+                    <div class="card">
+                        <h2>Nome</h2>
+                        <p class="errorMessage">errorMessage</p>
+                        <div class="inputField">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <input type="text" id="charName" name="charName" placeholder="Informe o nome do char">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
+                    <div class="charImg">
+                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
+                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
+                    </div>
+                    <div class="card">
+                        <h2>Raça</h2>
+                        <p class="errorMessage">errorMessage</p>
+                        <div class="inputField">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <input type="text" id="charRace" name="charRace" placeholder="Informe a raça do char">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
+                    <div class="charImg">
+                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
+                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
+                    </div>
+                    <div class="card">
+                        <h2>Hitórico</h2>
+                        <p class="errorMessage">errorMessage</p>
+                        <div class="inputField">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <input type="text" id="charhistoric" name="charhistoric" placeholder="Informe o histórico do char">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="changeButton">
+            <button class="previousButton">
+                <i class="fa fa-light fa-arrow-left-long"></i>
+            </button>
+            <button class="nextButton">
+                <i class="fa fa-light fa-arrow-right-long"></i>
+            </button>
+        </div>
+
+        <!-- <a href="#">clique</a> -->
+    </div>
+    <!-- <script defer>
+        document.querySelector('a').addEventListener('click', () => {
+            document.querySelector('.card > .card').classList.toggle('errorDetected')
+        })
+    </script> -->
+    <script src="../static/js/char_creator.js" defer></script>
+    <script src="https://kit.fontawesome.com/3797641237.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
