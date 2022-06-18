@@ -42,6 +42,10 @@ body {
     font-size: toRem(16);
 }
 
+ul {
+    list-style: none;
+}
+
 // General container style
 .container {
     @include fullSize;
@@ -174,166 +178,279 @@ body {
     }
 }
 
-// Back/next button style
-.nextButton {
-    @include stylizedButton;
-
-    i {
-        //@include hidden
-        justify-self: flex-end;
-    }
-}
-
-.previousButton {
-    @include stylizedButton;
-
-    i {
-        //@include hidden
-        justify-self: flex-start;
-    }
-}
-
-.changeButton {
-    @include flexOptions(center, space-between, row);
-    width: 95%;
-    position: absolute;
-    z-index: 4;
-
-    button {
-        width: 25%;
-        max-width: 8rem;
-        height: 5rem;
-    }
-}
-
 // Character Creator styles
 #char_creator {
     .container {
-        background-color: linear-gradient($p-color, $s-color, white);
+        background: white;
+    }
 
-        &:before {
-            @include fullSize;
-            @include positionAbsolute;
-            content: "";
-            // inserir depois a imagem personalizada
-            z-index: -1;
+    .charImg {
+        @include flexOptions(center, center, row);
+        width: 100%;
+        height: 60%;
+
+        position: absolute;
+        top: 0%;
+        left: 0%;
+
+        z-index: 2;
+
+        :first-child {
+            @include size(70%, 100%);
         }
     }
 
     .cardSlider {
-        @include fullSize;
-        max-width: 37.5rem;
-        max-height: 81.2rem;
+        width: 37.5rem;
+        height: 81.2rem;
         position: relative;
-        overflow: auto;
+        overflow: hidden;
+        border: 1px solid red
     }
 
     .cards {
-        @include fullSize;
-        @include gridOptions(repeat(3, 37.5rem), 1);
-        column-gap: 2rem;
-        position: relative;
-        top: 0px;
-        left: 0px;
-        transition: all 350ms;
-    }
-
-    .card {
-       
-        align-self: center;
-
-        position: relative;
-        
         width: 100%;
-        height: 95%;
-        
-        max-width: 37.5rem;
-        max-height: 81.2rem;
+        display: grid;
+        grid-template-rows: repeat(4, 81.2rem);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 250ms;
 
-        overflow: hidden;
+        .cardItem {
+            height: 100%;
 
-        .titleImg {
-            justify-self: center;
-            width: 80%;
-        }
-
-        .charImg {
-            display: flex;
-            width: 85%;
-            height: 65%;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            z-index: 3;
-
-            :first-child {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-            }
-
-            :last-child {
-                width: 100%;
-                height: 15%;
-                align-self: flex-end;
-            }
-        }
-
-        .card {
-            border: 1px solid red;
-            position: relative;
-            align-self: flex-end;
-            justify-self: center;
-            width: 100%;
-            height: 40%;
-            font-family: $font-normal;
-            padding: 0;
-            box-shadow: none;
-
-            h2 {
-                margin-top: 2rem;
-                font-size: toRem(32);
-                justify-self: center;
-            }
-
-            .inputField {
-                @include fullSize;
-                align-self: flex-end;
-                margin: 0;
+            h3 {
+                font-size: 3rem;
+                font-weight: 400;
             }
 
             .errorMessage {
                 @include hidden;
-                position: absolute;
-                top: 35%;
-                left: 50%;
-                transform: translate(-50%, -35%);
+                position: relative;
+                top: -3rem;
                 transition: all 150ms;
             }
 
-            &.errorDetected {
-                h2 {
-                    color: $c-error-msg;
+            .inputField {
+                @include size(80%, 20%);
+            }
+
+            .slider {
+                user-select: none;
+                @include flexOptions(center, center, row);
+                @include size(80%, 35%);
+                margin-top: 5rem;
+                position: relative;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+
+                input[type=radio] {
+                    display: none;
                 }
 
-                .inputField {
-                    border: 2px solid $c-error-msg;
+                label {
+                    @include size(100%, 100%);
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    border-radius: 2rem;
+                    cursor: pointer;
+                    overflow: hidden;
+                    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 1s ease;
 
-                    input,
-                    i {
-                        color: $c-error-msg;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                     }
-                }
-
-                .errorMessage {
-                    @include visible;
-                    top: 45%;
-                    transform: translate(-50%, -45%);
-                    transition: all 150ms;
                 }
             }
 
+            .sliderDescription {
+                @include hidden;
+                @include size(70%, 30%);
+                margin-top: 7rem;
+                position: relative;
+                top: -4%;
+                left: 0;
+               
+                transition: all 250ms;
+
+                text-align: justify;
+                text-justify: inter-word;
+
+                &.showSlider {
+                    @include visible;
+                    top: 0;
+                    transition: all 250ms;
+                }
+
+                h3 {
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 2rem;
+                }
+
+                p {
+                    transition: all 350ms;
+                    text-indent: 2rem;
+                }
+            }
+
+            &#nameSection {
+                display: grid;
+                padding-top: 5rem;
+
+                .titleImg {
+                    @include size(80%, 15%);
+                    max-width: 37.5rem;
+                    margin-inline: auto;
+                    justify-self: baseline;
+
+                    h2 {
+                        position: relative;
+                        top: -1rem;
+                        font-size: 2rem;
+                        font-weight: 400;
+                        text-align: center;
+                    }
+
+                    img {
+                        width: 100%;
+                        margin-inline: auto;
+                    }
+                }
+
+                .content {
+                    @include flexOptions(center, center, column);
+                    @include size(100%, 1%);
+                    margin-inline: auto;
+                    justify-self: center;
+
+                    p {
+                        @include size(70%, auto);
+                        color: gray;
+                        font-size: 1.2rem;
+                        text-align: center;
+                    }
+
+                    input {
+                        @include size(95%, auto);
+                        margin-block: 4.5rem 1rem;
+                        font-size: 2rem;
+                        text-align: center;
+                        outline: none;
+                        border: none;
+                        border-bottom: 1px solid black;
+                    }
+                }
+            }
+
+            &#raceSection {
+                @include flexOptions(center, baseline, column);
+                padding-top: 5rem;
+
+                h3 {
+                    margin-bottom: 3rem;
+                }
+
+                .slider {
+                    label {
+                        &[for=r1] {
+                            box-shadow: 0 0 16px red;
+                        }
+
+                        &[for=r2] {
+                            box-shadow: 0 0 16px rgb(0, 201, 0);
+                        }
+
+                        &[for=r3] {
+                            box-shadow: 0 0 16px rgb(168, 187, 0);
+                        }
+
+                        &[for=r4] {
+                            box-shadow: 0 0 16px rgb(170, 0, 128);
+                        }
+                    }
+
+                    #r1:checked~#race4,
+                    #r2:checked~#race1,
+                    #r3:checked~#race2,
+                    #r4:checked~#race3 {
+                        filter: blur(0.08rem);
+                        box-shadow: none;
+                        transform: translate3d(80%, -15%, -100px);
+                    }
+
+                    #r1:checked~#race1,
+                    #r2:checked~#race2,
+                    #r3:checked~#race3,
+                    #r4:checked~#race4 {
+                        transform: translate3d(0, 15%, 0);
+                    }
+
+                    #r1:checked~#race2,
+                    #r2:checked~#race3,
+                    #r3:checked~#race4,
+                    #r4:checked~#race1 {
+                        filter: blur(0.08rem);
+                        box-shadow: none;
+                        transform: translate3d(-80%, -15%, -100px);
+                    }
+
+                    #r1:checked~#race3,
+                    #r2:checked~#race4,
+                    #r3:checked~#race1,
+                    #r4:checked~#race2 {
+                        filter: blur(0.08rem) grayscale(50%);
+                        box-shadow: none;
+                        transform: translate3d(0%, -35%, -150px);
+                    }
+                }                
+            }
+
+            &#historicSection{
+
+
+            }
         }
+    }
+
+    button {
+        @include size(4rem, 4rem);
+        color: black;
+        font-size: 5rem;
+        border: none;
+        background: none;
+        transition: all 250ms;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .prevButton {
+        @include visible;
+        @include flexOptions(center, center, row);
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        z-index: 3;
+        transform: translate(-50%, 0%);
+    }
+
+    .nextButton {
+        @include visible;
+        @include flexOptions(center, center, row);
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        z-index: 3;
+        transform: translate(-50%, 0%);
+    }
+
+    .hideButton {
+        top: -20%;
     }
 }

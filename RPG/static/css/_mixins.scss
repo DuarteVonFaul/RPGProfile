@@ -3,7 +3,17 @@
     height: percentage(1);
 }
 
-@mixin overflowX( $overflor,$scrollWidth){
+@mixin size($width, $height){
+    width: $width;
+    height: $height;
+}
+
+@mixin maxSize($maxW, $maxH){
+    max-width: $maxW;
+    max-height: $maxH;
+}
+
+@mixin overflowX($overflor, $scrollWidth) {
     overflow: $overflor;
     scrollbar-width: $scrollWidth;
 }
@@ -15,7 +25,7 @@
     flex-direction: $direction;
 }
 
-@mixin gridOptions($t-columns, $t-rows){
+@mixin gridOptions($t-columns, $t-rows) {
     display: grid;
     grid-template-columns: $t-columns;
     grid-template-rows: $t-rows;

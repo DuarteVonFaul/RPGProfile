@@ -13,71 +13,57 @@
 <body id="char_creator">
     <div class="container">
         <div class="cardSlider">
-            <div class="cards">
-                <div class="card">
-                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
-                    <div class="charImg">
-                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
-                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
-                    </div>
-                    <div class="card">
-                        <h2>Nome</h2>
-                        <p class="errorMessage">errorMessage</p>
-                        <div class="inputField">
-                            <i class="fa-solid fa-user-pen"></i>
-                            <input type="text" id="charName" name="charName" placeholder="Informe o nome do char">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
-                    <div class="charImg">
-                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
-                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
-                    </div>
-                    <div class="card">
-                        <h2>Raça</h2>
-                        <p class="errorMessage">errorMessage</p>
-                        <div class="inputField">
-                            <i class="fa-solid fa-user-pen"></i>
-                            <input type="text" id="charRace" name="charRace" placeholder="Informe a raça do char">
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="titleImg" src="../static/assets/dragon-age-logo.png" alt="drangon Age">
-                    <div class="charImg">
-                        <img src="../static/assets/personagem-nao-selecionado.png" alt="personagem">
-                        <img src="../static/assets/sombra-personagem.png" alt="sombra personagem">
-                    </div>
-                    <div class="card">
-                        <h2>Hitórico</h2>
-                        <p class="errorMessage">errorMessage</p>
-                        <div class="inputField">
-                            <i class="fa-solid fa-user-pen"></i>
-                            <input type="text" id="charhistoric" name="charhistoric" placeholder="Informe o histórico do char">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ul class="cards">
+               <li id="nameSection" class="cardItem">
+                    <section class="titleImg">
+                        <img src="../static/assets/logo_black.png" alt="drangon Age">
+                        <h2>Criação de personagem</h2>
+                    </section>
+                    <section class="content">
+                        <h3>Escolha um nome</h3>
+                        <input type="text" name="charName" id="charName" placeholder="Erold da Floresta cinza">
+                        <p>Como seu personagem ficará conhecido no mundo de DragonAge?</p>
+                    </section>
+                </li>  
+                <li id="raceSection" class="cardItem">
+                    <h3>Escolha uma raça</h3>
+                    <section class="slider">
+                        <input type="radio" name="charRace" id="r1" data-race="human" checked>
+                        <input type="radio" name="charRace" id="r2" data-race="elf">
+                        <input type="radio" name="charRace" id="r3" data-race="dwarf">
+                        <input type="radio" name="charRace" id="r4" data-race="qunari">
+                        <label for="r1" id="race1">
+                            <img src="../static/assets/races_human.png" alt="">
+                        </label>
+                        <label for="r2" id="race2">
+                            <img src="../static/assets/races_elf.png" alt="">
+                        </label>
+                        <label for="r3" id="race3">
+                            <img src="../static/assets/races_dwarf.png" alt="">
+                        </label>
+                        <label for="r4" id="race4">
+                            <img src="../static/assets/races_qunari.png" alt="">
+                        </label>
+                    </section>
+                    <section class="sliderDescription"></section>
+                </li>
+                <li id="historicSection" class="cardItem">
+                    <h3>Histórico</h3>
+                    <section class="slider">
+
+                    </section>
+                    <section class="sliderDescription"></section>
+                </li>
+                <li class="cardItem">
+                    <h3>Bunos</h3>
+                </li>
+            </ul>
+            <button class="prevButton"><i class="fa-solid fa-angle-up"></i></button>
+            <button class="nextButton"><i class="fa-solid fa-angle-down"></i></button>
         </div>
 
-        <div class="changeButton">
-            <button class="previousButton">
-                <i class="fa fa-light fa-arrow-left-long"></i>
-            </button>
-            <button class="nextButton">
-                <i class="fa fa-light fa-arrow-right-long"></i>
-            </button>
-        </div>
-
-        <!-- <a href="#">clique</a> -->
     </div>
-    <!-- <script defer>
-        document.querySelector('a').addEventListener('click', () => {
-            document.querySelector('.card > .card').classList.toggle('errorDetected')
-        })
-    </script> -->
+
     <script src="../static/js/char_creator.js" defer></script>
     <script src="https://kit.fontawesome.com/3797641237.js" crossorigin="anonymous"></script>
 </body>
